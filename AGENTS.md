@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Application structure
+- Preserve the reference portfolio and CV as TanStack content routes with shared CSS tokens, UI Button variants, and CV data; this keeps the reproduction aligned with the original without replacing the framework.
+- Store original imported media using project-scoped asset pointers; source-project asset pointers cannot be served reliably by this project.
