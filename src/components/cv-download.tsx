@@ -16,6 +16,11 @@ export function CvDownload({ children = "Download PDF", variant = "portfolio", c
   async function download(event: MouseEvent<HTMLAnchorElement>) {
     // Preserve native new-tab gestures and a usable link before hydration.
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    // iPhone/iPad viewers can save through the native PDF share sheet.
+    // Keep this navigation synchronous so Safari does not block the new tab.
+    const appleMobile = /iPhone|iPad|iPod/.test(navigator.userAgent)
+      || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (appleMobile) return;
     event.preventDefault();
     if (busy) return;
     setBusy(true);
@@ -30,6 +35,8 @@ export function CvDownload({ children = "Download PDF", variant = "portfolio", c
       const link = document.createElement("a");
       link.href = url;
       link.download = filename;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -45,7 +52,7 @@ export function CvDownload({ children = "Download PDF", variant = "portfolio", c
   return (
     <div className="cv-download-control">
       <Button asChild variant={variant} className={className}>
-        <a href={pdfUrl} download={filename} onClick={download} aria-disabled={busy} aria-busy={busy}>
+        <a href={pdfUrl} download={filename} target="_blank" rel="noopener noreferrer" onClick={download} aria-disabled={busy} aria-busy={busy}>
           {busy ? <LoaderCircle className="animate-spin" /> : <Download />}
           {busy ? "Preparing PDF…" : children}
         </a>
