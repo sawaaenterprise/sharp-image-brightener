@@ -1,4 +1,4 @@
 # Tasks
-- [ ] Inspect and reproduce the reference repository.
-- [ ] Brighten the existing dark image.
-- [ ] Verify the resulting website.
+- [x] Inspect and reproduce the reference repository.
+- [x] Brighten the existing dark image.
+- [x] Verify the resulting website.
