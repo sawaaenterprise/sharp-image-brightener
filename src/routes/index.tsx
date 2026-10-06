@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight, Asterisk, FileText, Download, Linkedin } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Asterisk, FileText, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import portraitAsset from "@/assets/wahab-shadow-editorial-new.png.asset.json";
+import { CvDownload } from "@/components/cv-download";
+import portrait from "@/assets/wahab-bold-editorial.jpg";
 import raahPreviewAsset from "@/assets/raah-e-hidayath.png.asset.json";
 import sawaaPreviewAsset from "@/assets/sawaa-enterprise.png.asset.json";
 
-const portrait = portraitAsset.url;
 const raahPreview = raahPreviewAsset.url;
 const sawaaPreview = sawaaPreviewAsset.url;
 
@@ -62,7 +62,7 @@ function Portfolio() {
     <main className="portfolio-shell" id="top">
       <section className="hero" aria-label="Syed Abdul Wahab introduction">
         <div className="hero-smoke" aria-hidden="true" />
-        <img className="hero-image" src={portrait} alt="Syed Abdul Wahab in a dramatic half-shadow portrait" width={1536} height={1024} />
+        <img className="hero-image" src={portrait} alt="Syed Abdul Wahab in a sharply lit editorial portrait" width={1145} height={768} />
         <Header />
         <div className="hero-copy">
           <p className="hero-kicker"><Asterisk /> Python developer · Designer · Builder</p>
@@ -106,7 +106,7 @@ function Portfolio() {
           <div><FileText /><p>(04) Curriculum vitae / Python developer</p><h3 id="resume-title">The full<br /><em>picture.</em></h3><div className="resume-details">Explore my projects, technical skills and education. Available for development roles, internships and freelance collaborations.</div></div>
           <div className="resume-actions">
             <Button asChild variant="portfolio"><Link to="/cv">View full CV <ArrowUpRight /></Link></Button>
-            <Button asChild variant="portfolioOutline"><a href="/syed-abdul-wahab-cv.pdf" download="Syed-Abdul-Wahab-CV.pdf"><Download /> Download PDF</a></Button>
+            <CvDownload variant="portfolioOutline" />
           </div>
         </div>
       </section>
