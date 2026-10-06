@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowUpRight, Download, Mail } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CvDownload } from "@/components/cv-download";
 import { cvProfile } from "@/data/cv";
 
 export const Route = createFileRoute("/cv")({
@@ -23,9 +24,7 @@ function CvPage() {
       <header className="cv-nav">
         <Link to="/" className="cv-back"><ArrowLeft /> Portfolio</Link>
         <span className="cv-mark">SAW<span>®</span></span>
-        <Button asChild variant="portfolio" className="cv-download-small">
-          <a href="/syed-abdul-wahab-cv.pdf" download="Syed-Abdul-Wahab-CV.pdf"><Download /> Download PDF</a>
-        </Button>
+        <CvDownload className="cv-download-small" />
       </header>
 
       <section className="cv-masthead">
@@ -45,9 +44,7 @@ function CvPage() {
         <p className="cv-summary">{cvProfile.summary}</p>
         <div className="cv-contact-links">
           <a href={`mailto:${cvProfile.email}`}><Mail /> {cvProfile.email}</a>
-          <Button asChild variant="portfolio">
-            <a href="/syed-abdul-wahab-cv.pdf" download="Syed-Abdul-Wahab-CV.pdf"><Download /> Download one-page CV</a>
-          </Button>
+          <CvDownload>Download one-page CV</CvDownload>
         </div>
       </section>
 
@@ -90,7 +87,7 @@ function CvPage() {
         <p>{cvProfile.availability}</p>
         <div>
           <Button asChild variant="portfolio"><a href={`mailto:${cvProfile.email}`}><Mail /> Start a conversation</a></Button>
-          <Button asChild variant="portfolioOutline"><a href="/syed-abdul-wahab-cv.pdf" download="Syed-Abdul-Wahab-CV.pdf"><Download /> Download CV</a></Button>
+          <CvDownload variant="portfolioOutline">Download CV</CvDownload>
         </div>
       </section>
       <footer className="cv-footer"><span>{cvProfile.name}</span><span>Python Developer</span><span>India / Worldwide</span></footer>
